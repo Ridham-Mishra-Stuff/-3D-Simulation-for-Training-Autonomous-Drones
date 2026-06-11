@@ -186,3 +186,4 @@ First-Year Summer Internship Project
 Being Built using ROS2 Jazzy, Gazebo Harmonic, and Python
 
 ## 📄 License
+  This Project is Open-Source and available under the MIT-License .
