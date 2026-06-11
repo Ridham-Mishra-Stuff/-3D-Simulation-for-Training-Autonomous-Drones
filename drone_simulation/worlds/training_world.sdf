@@ -1,0 +1,45 @@
+<sdf version="1.8">
+
+<world name="drone_training_world">
+
+<include>
+<uri>model://ground_plane</uri>
+</include>
+
+<include>
+<uri>model://sun</uri>
+</include>
+
+<model name="warehouse">
+
+<pose>6 6 2 0 0 0</pose>
+
+<link name="link">
+
+<collision name="collision">
+
+<geometry>
+<box>
+<size>4 4 4</size>
+</box>
+</geometry>
+
+</collision>
+
+<visual name="visual">
+
+<geometry>
+<box>
+<size>4 4 4</size>
+</box>
+</geometry>
+
+</visual>
+
+</link>
+
+</model>
+
+</world>
+
+</sdf>
