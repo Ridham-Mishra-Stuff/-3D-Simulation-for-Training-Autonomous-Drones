@@ -29,7 +29,7 @@ In the current version, the drone workflow includes:
 The drone does not yet represent a fully developed autonomous system. 
 
 
-## 🛠️ Tech Stack :
+## Tech Stack :
 
 | Tool | Purpose |
 |---|---|
@@ -71,7 +71,7 @@ The current training approach is simple and beginner-friendly:
 
 
 
-## 🚀 How to Run
+## How to Run
 
 ### Ubuntu 24.04 with ROS2 Jazzy 
 
