@@ -1,0 +1,65 @@
+missions:
+  - name: "basic_hover"
+    description: "Basic hover stability training"
+    tasks:
+      - type: TAKEOFF
+        parameters:
+          altitude: 5.0
+      - type: HOVER
+        parameters:
+          duration: 30.0
+      - type: LAND
+        parameters: {}
+
+  - name: "waypoint_navigation"
+    description: "Waypoint navigation training"
+    tasks:
+      - type: TAKEOFF
+        parameters:
+          altitude: 5.0
+      - type: WAYPOINT
+        parameters:
+          position: [5.0, 0.0, 5.0]
+      - type: WAYPOINT
+        parameters:
+          position: [5.0, 5.0, 5.0]
+      - type: WAYPOINT
+        parameters:
+          position: [0.0, 5.0, 5.0]
+      - type: WAYPOINT
+        parameters:
+          position: [0.0, 0.0, 5.0]
+      - type: LAND
+        parameters: {}
+
+  - name: "obstacle_avoidance_training"
+    description: "Training with obstacles"
+    tasks:
+      - type: TAKEOFF
+        parameters:
+          altitude: 5.0
+      - type: WAYPOINT
+        parameters:
+          position: [10.0, 0.0, 5.0]
+        timeout: 60.0
+      - type: RTL
+        parameters: {}
+
+# Default parameters
+default:
+  takeoff_altitude: 5.0
+  cruise_speed: 2.0
+  waypoint_tolerance: 1.0
+  hover_duration: 5.0
+
+# Contingency plans
+contingency:
+  low_battery:
+    action: "land"
+    threshold: 20.0
+  communication_loss:
+    action: "rtl"
+    timeout: 10.0
+  gps_loss:
+    action: "hover"
+    timeout: 30.0
