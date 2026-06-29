@@ -1,0 +1,163 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="drone_inspection_arena">
+    
+    <!-- Physics -->
+    <physics type="ode">
+      <real_time_update_rate>1000</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+    </physics>
+    
+    <!-- Scene -->
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>true</shadows>
+    </scene>
+    
+    <!-- Ground Plane -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+    <!-- Sun -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    
+    <!-- Inspection Building -->
+    <model name="inspection_building">
+      <static>true</static>
+      <pose>10 0 0 0 0 0</pose>
+      <link name="building_link">
+        <collision name="building_collision">
+          <geometry>
+            <box>
+              <size>20 15 10</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="building_visual">
+          <geometry>
+            <box>
+              <size>20 15 10</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Landing Pad -->
+    <model name="landing_pad">
+      <static>true</static>
+      <pose>0 0 0.05 0 0 0</pose>
+      <link name="pad_link">
+        <collision name="pad_collision">
+          <geometry>
+            <cylinder>
+              <radius>1.5</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="pad_visual">
+          <geometry>
+            <cylinder>
+              <radius>1.5</radius>
+              <length>0.1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>1 1 0 1</ambient>
+            <diffuse>1 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Obstacles -->
+    <model name="obstacle_1">
+      <static>true</static>
+      <pose>5 3 2 0 0 0</pose>
+      <link name="obstacle_link">
+        <collision name="obstacle_collision">
+          <geometry>
+            <box>
+              <size>2 2 4</size>
+            </box>
+          </geometry>
+        </collision>
+        <visual name="obstacle_visual">
+          <geometry>
+            <box>
+              <size>2 2 4</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="obstacle_2">
+      <static>true</static>
+      <pose>7 -2 1.5 0 0 0</pose>
+      <link name="obstacle_link">
+        <collision name="obstacle_collision">
+          <geometry>
+            <cylinder>
+              <radius>1.0</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="obstacle_visual">
+          <geometry>
+            <cylinder>
+              <radius>1.0</radius>
+              <length>3.0</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Navigation Gates -->
+    <model name="gate_1">
+      <static>true</static>
+      <pose>3 0 3 0 0 0</pose>
+      <link name="gate_link">
+        <visual name="gate_visual">
+          <geometry>
+            <box>
+              <size>0.1 2.0 2.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 0 1 0.5</ambient>
+            <diffuse>0 0 1 0.5</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <!-- Wind Plugin -->
+    <plugin name="wind_plugin" filename="libgazebo_ros_wind.so">
+      <topic>/drone/wind</topic>
+      <windVelocityMean>5.0</windVelocityMean>
+      <windVelocityMax>10.0</windVelocityMax>
+      <windDirectionMean>0 1 0</windDirectionMean>
+    </plugin>
+    
+  </world>
+</sdf>
